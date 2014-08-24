@@ -10,7 +10,7 @@ namespace Walva\SimpleCmsBundle\Interfaces\Business;
 
 
 
-use Walva\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 
 interface ContentDelivererInterface {
 

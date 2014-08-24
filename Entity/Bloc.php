@@ -3,6 +3,8 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Bloc
@@ -43,14 +45,14 @@ class Bloc
     private $editionDate;
 
     /**
-     * @var \stdClass
+     * @var UserInterface
      *
      * @ORM\Column(name="author", type="object")
      */
     private $author;
 
     /**
-     * @var \stdClass
+     * @var UserInterface
      *
      * @ORM\Column(name="lastEditor", type="object")
      */

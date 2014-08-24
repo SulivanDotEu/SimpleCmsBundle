@@ -9,7 +9,7 @@
 namespace Walva\SimpleCmsBundle\Service;
 
 
-use Walva\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Exception\InvalidRequestException;
 
 class ContentRequest implements ContentRequestInterface{

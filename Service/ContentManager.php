@@ -10,12 +10,19 @@ namespace BePark\SimpleCmsBundle\Service;
 
 
 
-use BePark\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
-use BePark\SimpleCmsBundle\Exception\InvalidRequestException;
-use BePark\SimpleCmsBundle\Interfaces\Service\ContentManagerInterface;
+use JMS\DiExtraBundle\Annotation\Service;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\SimpleCmsBundle\Exception\InvalidRequestException;
+use Walva\SimpleCmsBundle\Interfaces\Service\ContentManagerInterface;
 use JMS\DiExtraBundle\Annotation\Inject;
 use Symfony\Component\HttpFoundation\Request;
 
+
+/**
+ * Class ContentManager
+ * @package BePark\SimpleCmsBundle\Service
+ * @Service("simplecms.manager.content")
+ */
 class ContentManager implements ContentManagerInterface {
 
 
@@ -24,6 +31,9 @@ class ContentManager implements ContentManagerInterface {
         if(!$cr->validate()){
             throw new InvalidRequestException();
         }
+
+        //return $this->container->get('templating')->renderResponse($view, $parameters, $response);
+
     }
 
     /**

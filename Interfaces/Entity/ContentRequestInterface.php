@@ -6,7 +6,7 @@
  * Time: 16:58
  */
 
-namespace Walva\LegacyApiBundle\Interfaces\Entity;
+namespace Walva\SimpleCmsBundle\Interfaces\Entity;
 
 
 interface ContentRequestInterface {

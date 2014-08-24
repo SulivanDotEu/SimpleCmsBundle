@@ -8,8 +8,7 @@
 
 namespace Walva\SimpleCmsBundle\Interfaces\Service;
 
-
-use Walva\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 
 interface ContentManagerInterface {
 
