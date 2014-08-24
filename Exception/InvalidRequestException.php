@@ -6,7 +6,7 @@
  * Time: 17:27
  */
 
-namespace BePark\SimpleCmsBundle\Exception;
+namespace Walva\SimpleCmsBundle\Exception;
 
 
 class InvalidRequestException extends \Exception{

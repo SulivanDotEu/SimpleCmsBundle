@@ -1,6 +1,6 @@
 <?php
 
-namespace BePark\SimpleCmsBundle\Entity;
+namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

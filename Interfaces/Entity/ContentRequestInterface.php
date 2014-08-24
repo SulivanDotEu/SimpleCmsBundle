@@ -6,7 +6,7 @@
  * Time: 16:58
  */
 
-namespace BePark\LegacyApiBundle\Interfaces\Entity;
+namespace Walva\LegacyApiBundle\Interfaces\Entity;
 
 
 interface ContentRequestInterface {

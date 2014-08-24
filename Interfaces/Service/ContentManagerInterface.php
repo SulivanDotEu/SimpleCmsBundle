@@ -6,10 +6,10 @@
  * Time: 17:03
  */
 
-namespace BePark\SimpleCmsBundle\Interfaces\Service;
+namespace Walva\SimpleCmsBundle\Interfaces\Service;
 
 
-use BePark\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
 
 interface ContentManagerInterface {
 

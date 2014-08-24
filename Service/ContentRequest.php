@@ -6,11 +6,11 @@
  * Time: 17:28
  */
 
-namespace BePark\SimpleCmsBundle\Service;
+namespace Walva\SimpleCmsBundle\Service;
 
 
-use BePark\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
-use BePark\SimpleCmsBundle\Exception\InvalidRequestException;
+use Walva\LegacyApiBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\SimpleCmsBundle\Exception\InvalidRequestException;
 
 class ContentRequest implements ContentRequestInterface{
 

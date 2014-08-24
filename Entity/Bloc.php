@@ -1,6 +1,6 @@
 <?php
 
-namespace BePark\SimpleCmsBundle\Entity;
+namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Bloc
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="BePark\SimpleCmsBundle\Entity\BlocRepository")
+ * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\BlocRepository")
  */
 class Bloc
 {
