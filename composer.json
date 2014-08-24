@@ -1,6 +1,6 @@
 {
-    "name" : "company/demobundle",
-    "description" : "A demo bundle",
+    "name" : "walva/DimpleCmsBundle",
+    "description" : "A simple CMS that provide block content and a few strategy (by country, by language, etc...) to manage the content of your website (or more).",
     "type" : "symfony-bundle",
     "authors" : [{
         "name" : "Benjamin Ellis",
