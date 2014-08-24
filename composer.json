@@ -1,0 +1,30 @@
+{
+    "name" : "company/demobundle",
+    "description" : "A demo bundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Benjamin Ellis",
+        "email" : "ellis.benjamin@outlook.com"
+    }],
+    "keywords" : [
+        "cms, symfony 2, translation"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Walva\\SimpleCmsBundle" : ""
+        }
+    },
+    "target-dir" : "Walva/SimpleCmsBundle",
+    "repositories" : [{
+    ],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "master"
+        }
+    }
+}
