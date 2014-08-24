@@ -20,7 +20,7 @@
         }
     },
     "target-dir" : "Walva/SimpleCmsBundle",
-    "repositories" : [{
+    "repositories" : [{}
     ],
     "extra" : {
     "branch-alias" : {
