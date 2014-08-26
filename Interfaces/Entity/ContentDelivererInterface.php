@@ -6,7 +6,7 @@
  * Time: 16:57
  */
 
-namespace Walva\SimpleCmsBundle\Interfaces\Business;
+namespace Walva\SimpleCmsBundle\Interfaces\Entity;
 
 
 

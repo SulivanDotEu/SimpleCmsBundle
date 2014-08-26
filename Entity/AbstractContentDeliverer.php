@@ -3,15 +3,17 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentDelivererInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 
 /**
  * AbstractContentDeliverer
  *
  * @ORM\Table()
- * @InheritanceType("SINGLE_TABLE")
+ * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\AbstractContentDelivererRepository")
  */
-class AbstractContentDeliverer
+class AbstractContentDeliverer implements ContentDelivererInterface
 {
     /**
      * @var integer
@@ -28,6 +30,17 @@ class AbstractContentDeliverer
      * @ORM\Column(name="internalName", type="string", length=255)
      */
     private $internalName;
+
+    function __toString()
+    {
+        return $this->getInternalName();
+    }
+
+
+    public function getContentForRequest(ContentRequestInterface $cr)
+    {
+        throw new \RuntimeException();
+    }
 
 
     /**

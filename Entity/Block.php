@@ -10,9 +10,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * Bloc
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\BlocRepository")
+ * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\BlockRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
-class Bloc
+class Block
 {
     /**
      * @var integer
@@ -40,30 +41,49 @@ class Bloc
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="editionDate", type="datetime")
+     * @ORM\Column(name="editionDate", type="datetime", nullable=true)
      */
     private $editionDate;
 
     /**
      * @var UserInterface
      *
-     * @ORM\Column(name="author", type="object")
+     * @ORM\ManyToOne(targetEntity="BePark\UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 
     /**
      * @var UserInterface
      *
-     * @ORM\Column(name="lastEditor", type="object")
+     * @ORM\ManyToOne(targetEntity="BePark\UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lastEditor;
 
     /**
      * @var \stdClass
      *
-     * @ORM\Column(name="deliverers", type="object")
+     * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $deliverers;
+    private $deliverer;
+
+    // BUSINESS CODE
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate(){
+        $this->setEditionDate(new \DateTime());
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist(){
+        $this->setCreationDate(new \DateTime());
+    }
 
 
     /**
@@ -145,13 +165,40 @@ class Bloc
         return $this->editionDate;
     }
 
+
+
+
+
+    /**
+     * Set deliverer
+     *
+     * @param \Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer $deliverer
+     * @return Block
+     */
+    public function setDeliverer(\Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer $deliverer = null)
+    {
+        $this->deliverer = $deliverer;
+    
+        return $this;
+    }
+
+    /**
+     * Get deliverer
+     *
+     * @return \Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer 
+     */
+    public function getDeliverer()
+    {
+        return $this->deliverer;
+    }
+
     /**
      * Set author
      *
-     * @param \stdClass $author
-     * @return Bloc
+     * @param \BePark\UserBundle\Entity\User $author
+     * @return Block
      */
-    public function setAuthor($author)
+    public function setAuthor(\BePark\UserBundle\Entity\User $author = null)
     {
         $this->author = $author;
     
@@ -161,7 +208,7 @@ class Bloc
     /**
      * Get author
      *
-     * @return \stdClass 
+     * @return \BePark\UserBundle\Entity\User 
      */
     public function getAuthor()
     {
@@ -171,10 +218,10 @@ class Bloc
     /**
      * Set lastEditor
      *
-     * @param \stdClass $lastEditor
-     * @return Bloc
+     * @param \BePark\UserBundle\Entity\User $lastEditor
+     * @return Block
      */
-    public function setLastEditor($lastEditor)
+    public function setLastEditor(\BePark\UserBundle\Entity\User $lastEditor = null)
     {
         $this->lastEditor = $lastEditor;
     
@@ -184,33 +231,10 @@ class Bloc
     /**
      * Get lastEditor
      *
-     * @return \stdClass 
+     * @return \BePark\UserBundle\Entity\User 
      */
     public function getLastEditor()
     {
         return $this->lastEditor;
-    }
-
-    /**
-     * Set deliverers
-     *
-     * @param \stdClass $deliverers
-     * @return Bloc
-     */
-    public function setDeliverers($deliverers)
-    {
-        $this->deliverers = $deliverers;
-    
-        return $this;
-    }
-
-    /**
-     * Get deliverers
-     *
-     * @return \stdClass 
-     */
-    public function getDeliverers()
-    {
-        return $this->deliverers;
     }
 }

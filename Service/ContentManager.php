@@ -6,7 +6,7 @@
  * Time: 17:11
  */
 
-namespace BePark\SimpleCmsBundle\Service;
+namespace Walva\SimpleCmsBundle\Service;
 
 
 

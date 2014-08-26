@@ -1,0 +1,28 @@
+{% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}
+
+{% block crud_table_body -%}
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Internalname</th>
+                <td>{{ entity.internalName }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{{ entity.creationDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Editiondate</th>
+                <td>{{ entity.editionDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ entity.author }}</td>
+            </tr>
+            <tr>
+                <th>Lasteditor</th>
+                <td>{{ entity.lastEditor }}</td>
+            </tr>
+{% endblock %}

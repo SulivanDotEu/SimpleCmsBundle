@@ -3,6 +3,7 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 
 /**
  * Document
@@ -28,6 +29,10 @@ class Document extends AbstractContentDeliverer
      */
     private $content;
 
+    public function getContentForRequest(ContentRequestInterface $cr)
+    {
+        return $this->getContent();
+    }
 
     /**
      * Get id
@@ -36,8 +41,14 @@ class Document extends AbstractContentDeliverer
      */
     public function getId()
     {
-        return $this->id;
+        return parent::getId();
     }
+
+    function __toString()
+    {
+        return 'Document "'.$this->getInternalName().'"';
+    }
+
 
     /**
      * Set content
