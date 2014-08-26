@@ -28,20 +28,27 @@ class CountryStrategyDeliverer extends AbstractContentDeliverer {
     private $id;
 
     /**
-     *
-     * @ORM\OneToMany(targetEntity="Walva\SimpleCmsBundle\Entity\CountryStrategyDelivererRelation",
+     * @ORM\OneToMany(
+     *      targetEntity="Walva\SimpleCmsBundle\Entity\CountryStrategyDelivererRelation",
      *      mappedBy="owner",
      *      cascade="all",
      *      fetch="LAZY")
-     *
      */
     private $delivererRelations;
+
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->delivererRelations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function equals($object){
+        if($object == null) return false;
+        if(!$object instanceof CountryStrategyDeliverer) return false;
+        if($object->getId() != $this->getId()) return false;
+        return true;
     }
 
     /**
@@ -87,12 +94,5 @@ class CountryStrategyDeliverer extends AbstractContentDeliverer {
     public function getDelivererRelations()
     {
         return $this->delivererRelations;
-    }
-
-    public function equals($object){
-        if($object == null) return false;
-        if(!$object instanceof CountryStrategyDeliverer) return false;
-        if($object->getId() != $this->getId()) return false;
-        return true;
     }
 }

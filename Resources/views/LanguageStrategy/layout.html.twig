@@ -1,0 +1,16 @@
+{% extends  "WalvaSimpleCmsBundle::strategy-layout.html.twig" %}
+
+
+{% block header_title %}
+<span class="glyphicon glyphicon-move"></span> SimpleCms/Strategy/Language
+{% endblock %}
+
+{% block content %}
+<h1>Hello {{ name }}!</h1>
+<hr>
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="active">Language</li>
+{% endblock %}
