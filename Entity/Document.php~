@@ -4,9 +4,6 @@ namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
-use Walva\SimpleCmsBundle\Interfaces\View\TreeViewConfigurator;
-use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
-use Walva\SimpleCmsBundle\View\Label;
 
 /**
  * Document
@@ -14,7 +11,7 @@ use Walva\SimpleCmsBundle\View\Label;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\DocumentRepository")
  */
-class Document extends AbstractContentDeliverer implements TreeViewConfigurator
+class Document extends AbstractContentDeliverer
 {
     /**
      * @var integer
@@ -35,14 +32,6 @@ class Document extends AbstractContentDeliverer implements TreeViewConfigurator
     public function getContentForRequest(ContentRequestInterface $cr)
     {
         return $this->getContent();
-    }
-
-    public function configureView(TreeViewInterface $view){
-        $label = new Label();
-        $label->setColor(Label::COLOR_GREEN);
-        $view->setName($this->getInternalName());
-        $view->addLabel($label);
-        return $view;
     }
 
     /**

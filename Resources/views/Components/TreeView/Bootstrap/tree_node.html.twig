@@ -1,0 +1,10 @@
+{# tree Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface #}
+
+<div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px; margin-bottom: 5px;">
+
+    {% for label in tree.labels %}
+        <span class="label label-{{ label.color }}">{{ label.name }}</span>
+    {% endfor %}
+    {{ tree.name }}
+
+</div>

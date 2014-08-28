@@ -7,15 +7,15 @@ use \Walva\CrudAdminBundle\Controller\CrudController as Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Walva\SimpleCmsBundle\Entity\CountryStrategyDelivererRelation;
-use Walva\SimpleCmsBundle\Form\CountryStrategyDelivererRelationType;
+use Walva\SimpleCmsBundle\Entity\CountryStrategyRelation;
+use Walva\SimpleCmsBundle\Form\CountryStrategyRelationType;
 
 /**
- * CountryStrategyDelivererRelation controller.
+ * CountryStrategyRelation controller.
  *
- * @Route("/strategy_country_relation")
+ * @Route("/admin/cms/strategy/relation/country")
  */
-class CountryStrategyDelivererRelationController extends Controller
+class CountryStrategyRelationController extends Controller
 {
 
 function __construct() {
@@ -27,10 +27,10 @@ function __construct() {
         self::$ROUTE_INDEX_SHOW => 'strategy_country_relation_show',
     ));
 
-    $this->setLayoutPath('WalvaSimpleCmsBundle:CountryStrategyDelivererRelation:layout.html.twig');
-    $this->setIndexPath("WalvaSimpleCmsBundle:CountryStrategyDelivererRelation:index.html.twig");
-    $this->setShowPath("WalvaSimpleCmsBundle:CountryStrategyDelivererRelation:show.html.twig");
-    $this->setEditPath("WalvaSimpleCmsBundle:CountryStrategyDelivererRelation:edit.html.twig");
+    $this->setLayoutPath('WalvaSimpleCmsBundle:CountryStrategyRelation:layout.html.twig');
+    $this->setIndexPath("WalvaSimpleCmsBundle:CountryStrategyRelation:index.html.twig");
+    $this->setShowPath("WalvaSimpleCmsBundle:CountryStrategyRelation:show.html.twig");
+    $this->setEditPath("WalvaSimpleCmsBundle:CountryStrategyRelation:edit.html.twig");
 
     $this->setColumnsHeader(array(
         "Id",
@@ -38,16 +38,16 @@ function __construct() {
 }
 
 public function createEntity() {
-        return new CountryStrategyDelivererRelation();
+        return new CountryStrategyRelation();
     }
 
 public function getRepository() {
         $em = $this->getDoctrine()->getManager();
-        return $em->getRepository('WalvaSimpleCmsBundle:CountryStrategyDelivererRelation');
+        return $em->getRepository('WalvaSimpleCmsBundle:CountryStrategyRelation');
     }
 
     /**
-     * Lists all CountryStrategyDelivererRelation entities.
+     * Lists all CountryStrategyRelation entities.
      *
      * @Route("/", name="strategy_country_relation")
      * @Method("GET")
@@ -59,11 +59,11 @@ public function getRepository() {
 
     }
     /**
-     * Creates a new CountryStrategyDelivererRelation entity.
+     * Creates a new CountryStrategyRelation entity.
      *
      * @Route("/", name="strategy_country_relation_create")
      * @Method("POST")
-     * @Template("WalvaSimpleCmsBundle:CountryStrategyDelivererRelation:new.html.twig")
+     * @Template("WalvaSimpleCmsBundle:CountryStrategyRelation:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -72,15 +72,15 @@ public function getRepository() {
     }
 
     /**
-    * Creates a form to create a CountryStrategyDelivererRelation entity.
+    * Creates a form to create a CountryStrategyRelation entity.
     *
-    * @param CountryStrategyDelivererRelation $entity The entity
+    * @param CountryStrategyRelation $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    public function createCreateForm(CountryStrategyDelivererRelation $entity)
+    public function createCreateForm(CountryStrategyRelation $entity)
     {
-        $form = $this->createForm(new CountryStrategyDelivererRelationType(), $entity, array(
+        $form = $this->createForm(new CountryStrategyRelationType(), $entity, array(
             'action' => $this->generateUrl('strategy_country_relation_create'),
             'method' => 'POST',
         ));
@@ -91,7 +91,7 @@ public function getRepository() {
     }
 
     /**
-     * Displays a form to create a new CountryStrategyDelivererRelation entity.
+     * Displays a form to create a new CountryStrategyRelation entity.
      *
      * @Route("/new", name="strategy_country_relation_new")
      * @Method("GET")
@@ -104,7 +104,7 @@ public function getRepository() {
     }
 
     /**
-     * Finds and displays a CountryStrategyDelivererRelation entity.
+     * Finds and displays a CountryStrategyRelation entity.
      *
      * @Route("/{id}", name="strategy_country_relation_show")
      * @Method("GET")
@@ -117,7 +117,7 @@ public function getRepository() {
     }
 
     /**
-     * Displays a form to edit an existing CountryStrategyDelivererRelation entity.
+     * Displays a form to edit an existing CountryStrategyRelation entity.
      *
      * @Route("/{id}/edit", name="strategy_country_relation_edit")
      * @Method("GET")
@@ -130,15 +130,15 @@ public function getRepository() {
     }
 
     /**
-    * Creates a form to edit a CountryStrategyDelivererRelation entity.
+    * Creates a form to edit a CountryStrategyRelation entity.
     *
-    * @param CountryStrategyDelivererRelation $entity The entity
+    * @param CountryStrategyRelation $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    public function createEditForm(CountryStrategyDelivererRelation $entity)
+    public function createEditForm(CountryStrategyRelation $entity)
     {
-        $form = $this->createForm(new CountryStrategyDelivererRelationType(), $entity, array(
+        $form = $this->createForm(new CountryStrategyRelationType(), $entity, array(
             'action' => $this->generateUrl('strategy_country_relation_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -148,11 +148,11 @@ public function getRepository() {
         return $form;
     }
     /**
-     * Edits an existing CountryStrategyDelivererRelation entity.
+     * Edits an existing CountryStrategyRelation entity.
      *
      * @Route("/{id}", name="strategy_country_relation_update")
      * @Method("PUT")
-     * @Template("WalvaSimpleCmsBundle:CountryStrategyDelivererRelation:edit.html.twig")
+     * @Template("WalvaSimpleCmsBundle:CountryStrategyRelation:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -160,7 +160,7 @@ public function getRepository() {
 
     }
     /**
-     * Deletes a CountryStrategyDelivererRelation entity.
+     * Deletes a CountryStrategyRelation entity.
      *
      * @Route("/{id}", name="strategy_country_relation_delete")
      * @Method("DELETE")
@@ -172,7 +172,7 @@ return parent::deleteAction($request, $id);
     }
 
     /**
-     * Creates a form to delete a CountryStrategyDelivererRelation entity by id.
+     * Creates a form to delete a CountryStrategyRelation entity by id.
      *
      * @param mixed $id The entity id
      *

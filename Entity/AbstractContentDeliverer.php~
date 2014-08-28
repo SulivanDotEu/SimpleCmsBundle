@@ -42,6 +42,7 @@ class AbstractContentDeliverer implements ContentDelivererInterface
         throw new \RuntimeException();
     }
 
+
     /**
      * Get id
      *

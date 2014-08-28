@@ -1,21 +1,33 @@
-{% extends  'WalvaCrudAdminBundle:Crud:new.html.twig' %}
+{% extends  'WalvaCrudAdminBundle:Crud:edit.html.twig' %}
+
+
 
 {% block body -%}
     {% block crud_top_button %}
-        <div style="padding-bottom: 44px;">
+        <div  style="padding-bottom: 44px;">
             <div class="pull-left" style="padding-bottom: 10px;">
                 <a href="{{ path(routeIndex) }}" class="btn btn-default">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Back to the list
                 </a>
             </div>
+            <div class="pull-right" style="padding-bottom: 10px;">
 
+                <div class="btn-group">
+                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default "><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default "><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                </div>
+
+            </div>
         </div>
     {% endblock %}
 
-    <h1>CountryStrategyDeliverer creation</h1>
+    <h1>Edition form</h1>
 
-    {{ form(form) }}
+    {{ form(edit_form) }}
+
+    <hr>
+    {{ form(delete_form) }}
 
 
 
@@ -29,7 +41,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-            var $container = $('div#walva_simplecmsbundle_countrystrategydeliverer_delivererRelations');
+            var $container = $('div#walva_simplecmsbundle_countrystrategy_delivererRelations');
 
             // On ajoute un lien pour ajouter une nouvelle catégorie
             var $lienAjout = $('<a href="#" id="ajout_categorie" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Ajouter une entrée</a>');
@@ -37,7 +49,7 @@
 
             // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
             $lienAjout.click(function (e) {
-                ajouterCategorie($container);
+                addEntry($container);
                 e.preventDefault(); // évite qu'un # apparaisse dans l'URL
                 return false;
             });
@@ -47,7 +59,7 @@
 
             // On ajoute un premier champ directement s'il n'en existe pas déjà un (cas d'un nouvel article par exemple).
             if (index == 0) {
-                ajouterCategorie($container);
+                addEntry($container);
             } else {
                 // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
                 $container.children('div').each(function () {
@@ -56,7 +68,7 @@
             }
 
             // La fonction qui ajoute un formulaire Categorie
-            function ajouterCategorie($container) {
+            function addEntry($container) {
                 // Dans le contenu de l'attribut « data-prototype », on remplace :
                 // - le texte "__name__label__" qu'il contient par le label du champ
                 // - le texte "__name__" qu'il contient par le numéro du champ
@@ -76,7 +88,7 @@
             // La fonction qui ajoute un lien de suppression d'une catégorie
             function ajouterLienSuppression($prototype) {
                 // Création du lien
-                $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+                $lienSuppression = $('<a href="#" class="btn btn-danger btn-xs">Supprimer</a>');
 
                 // Ajout du lien
                 $prototype.append($lienSuppression);

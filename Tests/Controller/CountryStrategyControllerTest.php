@@ -4,7 +4,7 @@ namespace Walva\SimpleCmsBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class CountryStrategyDelivererRelationControllerTest extends WebTestCase
+class CountryStrategyControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class CountryStrategyDelivererRelationControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/strategy_country_relation/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /strategy_country_relation/");
+        $crawler = $client->request('GET', '/strategy/country/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /strategy/country/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'walva_simplecmsbundle_countrystrategydelivererrelation[field_name]'  => 'Test',
+            'walva_simplecmsbundle_CountryStrategy[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class CountryStrategyDelivererRelationControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'walva_simplecmsbundle_countrystrategydelivererrelation[field_name]'  => 'Foo',
+            'walva_simplecmsbundle_CountryStrategy[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

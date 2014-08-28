@@ -1,6 +1,38 @@
 {% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}
 
-{% block crud_table_body -%}
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="active">show</li>
+{% endblock %}
+
+{% block body %}
+
+    {% block crud_top_button %}
+        <div style="padding-bottom: 10px;">
+            <div class="pull-left" style="padding-bottom: 10px;">
+                <a href="{{ path(routeIndex) }}" class="btn btn-default btn">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Back to the list
+                </a>
+            </div>
+
+            <div class="pull-right" style="padding-bottom: 10px;">
+
+                <div class="btn-group">
+                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn"><span
+                                class="glyphicon glyphicon-pencil"></span> Edit</a>
+                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn"><span
+                                class="glyphicon glyphicon-remove"></span> Delete</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    {% endblock %}
+    {% block body_content %}
+        <table class="table table-stripped">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
@@ -25,4 +57,85 @@
                 <th>Lasteditor</th>
                 <td>{{ entity.lastEditor }}</td>
             </tr>
+            </tbody>
+        </table>
+
+    {% endblock %}
+    <hr>
+    <h1>Ahah !</h1>
+        {{ cms_renderBlock(entity)|raw }}
+    <hr>
+    <h2>tree view</h2>
+    <ul class="list-unstyled">
+        <li>
+            <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                <span class="label label-primary">Block</span> {{ entity.internalName }}</div>
+            <ul>
+                <li>
+                    <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                        <span class="label label-warning">Strategy - Country</span> homepage.welcome.country
+                    </div>
+
+                    <ul>
+                        <li>
+                            <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                                <span class="label label-warning">FR</span>
+                                <span class="label label-success">Document</span>
+                                welcome FR FR
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                                <span class="label label-warning">BE</span>
+                                <span class="label label-warning">Strategy - Language</span>
+                                homepage.welcome.BE.language
+                            </div>
+
+                            <ul>
+                                <li>
+                                    <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                                        <span class="label label-warning">fr</span>
+                                        <span class="label label-success">Document</span> welcome BE FR
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                                        <span class="label label-warning">nl</span>
+                                        <span class="label label-success">Document</span> welcome BE NL
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                                <span class="label label-warning">ES</span>
+                                <span class="label label-success">Document</span>
+                                welcome ES ES
+                            </div>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <hr>
+    <h2>tree view</h2>
+    <ul class="list-unstyled">
+        <li>
+            <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                <span class="label label-primary">Block</span> {{ entity.internalName }}</div>
+            <ul>
+                <li>
+                    <div class="btn btn-default btn-block" style="text-align: left; padding-left: 10px">
+                        <span class="label label-success">Document</span>
+                        welcome BE FR
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
 {% endblock %}

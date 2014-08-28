@@ -16,4 +16,8 @@ interface ContentDelivererInterface {
 
     public function getContentForRequest(ContentRequestInterface $cr);
 
+    /**
+     * @return boolean
+     */
+
 } 

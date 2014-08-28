@@ -20,6 +20,7 @@ class LanguageStrategyType extends AbstractType
                     'type' => new LanguageStrategyRelationType(),
                     'allow_add' => true,
                     'allow_delete' => true,
+                    'by_reference' => false,
                 ));
     }
 

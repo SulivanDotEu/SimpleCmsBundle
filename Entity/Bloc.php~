@@ -5,18 +5,14 @@ namespace Walva\SimpleCmsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Walva\SimpleCmsBundle\Interfaces\View\TreeViewConfigurator;
-use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
-use Walva\SimpleCmsBundle\View\Label;
 
 /**
  * Bloc
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\BlockRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\BlocRepository")
  */
-class Block implements TreeViewConfigurator
+class Bloc
 {
     /**
      * @var integer
@@ -44,59 +40,30 @@ class Block implements TreeViewConfigurator
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="editionDate", type="datetime", nullable=true)
+     * @ORM\Column(name="editionDate", type="datetime")
      */
     private $editionDate;
 
     /**
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="BePark\UserBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(name="author", type="object")
      */
     private $author;
 
     /**
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="BePark\UserBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(name="lastEditor", type="object")
      */
     private $lastEditor;
 
     /**
      * @var \stdClass
      *
-     * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(name="deliverers", type="object")
      */
-    private $deliverer;
-
-    // BUSINESS CODE
-    public function configureView(TreeViewInterface $view)
-    {
-        $label = new Label();
-        $label->setColor(Label::COLOR_BLUE);
-        $label->setName("Block");
-        $view->addLabel($label);
-        $view->setName($this->getInternalName());
-        return $view;
-    }
-
-
-    /**
-     * @ORM\PreUpdate()
-     */
-    public function preUpdate(){
-        $this->setEditionDate(new \DateTime());
-    }
-
-    /**
-     * @ORM\PrePersist()
-     */
-    public function prePersist(){
-        $this->setCreationDate(new \DateTime());
-    }
+    private $deliverers;
 
 
     /**
@@ -178,40 +145,13 @@ class Block implements TreeViewConfigurator
         return $this->editionDate;
     }
 
-
-
-
-
-    /**
-     * Set deliverer
-     *
-     * @param \Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer $deliverer
-     * @return Block
-     */
-    public function setDeliverer(\Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer $deliverer = null)
-    {
-        $this->deliverer = $deliverer;
-    
-        return $this;
-    }
-
-    /**
-     * Get deliverer
-     *
-     * @return \Walva\SimpleCmsBundle\Entity\AbstractContentDeliverer 
-     */
-    public function getDeliverer()
-    {
-        return $this->deliverer;
-    }
-
     /**
      * Set author
      *
-     * @param \BePark\UserBundle\Entity\User $author
-     * @return Block
+     * @param \stdClass $author
+     * @return Bloc
      */
-    public function setAuthor(\BePark\UserBundle\Entity\User $author = null)
+    public function setAuthor($author)
     {
         $this->author = $author;
     
@@ -221,7 +161,7 @@ class Block implements TreeViewConfigurator
     /**
      * Get author
      *
-     * @return \BePark\UserBundle\Entity\User 
+     * @return \stdClass 
      */
     public function getAuthor()
     {
@@ -231,10 +171,10 @@ class Block implements TreeViewConfigurator
     /**
      * Set lastEditor
      *
-     * @param \BePark\UserBundle\Entity\User $lastEditor
-     * @return Block
+     * @param \stdClass $lastEditor
+     * @return Bloc
      */
-    public function setLastEditor(\BePark\UserBundle\Entity\User $lastEditor = null)
+    public function setLastEditor($lastEditor)
     {
         $this->lastEditor = $lastEditor;
     
@@ -244,10 +184,33 @@ class Block implements TreeViewConfigurator
     /**
      * Get lastEditor
      *
-     * @return \BePark\UserBundle\Entity\User 
+     * @return \stdClass 
      */
     public function getLastEditor()
     {
         return $this->lastEditor;
+    }
+
+    /**
+     * Set deliverers
+     *
+     * @param \stdClass $deliverers
+     * @return Bloc
+     */
+    public function setDeliverers($deliverers)
+    {
+        $this->deliverers = $deliverers;
+    
+        return $this;
+    }
+
+    /**
+     * Get deliverers
+     *
+     * @return \stdClass 
+     */
+    public function getDeliverers()
+    {
+        return $this->deliverers;
     }
 }

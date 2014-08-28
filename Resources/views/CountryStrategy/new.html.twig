@@ -1,6 +1,4 @@
-{% extends  'WalvaCrudAdminBundle:Crud:edit.html.twig' %}
-
-
+{% extends  'WalvaCrudAdminBundle:Crud:new.html.twig' %}
 
 {% block body -%}
     {% block crud_top_button %}
@@ -11,39 +9,27 @@
                     Back to the list
                 </a>
             </div>
-            <div class="pull-right" style="padding-bottom: 10px;">
 
-                <div class="btn-group">
-                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default "><span
-                                class="glyphicon glyphicon-pencil"></span> Edit</a>
-                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default "><span
-                                class="glyphicon glyphicon-remove"></span> Delete</a>
-                </div>
-
-            </div>
         </div>
     {% endblock %}
 
-    <h1>Edition form</h1>
+    <h1>Creation form</h1>
 
-    {{ form(edit_form) }}
-
-    <hr>
-    {{ form(delete_form) }}
+    {{ form(form) }}
 
 
 
 
 
     {# On charge la bibliothèque jQuery. Ici, je la prends depuis le site jquery.com,
-       mais si vous l'avez en local, changez simplement l'adresse. #}
+         mais si vous l'avez en local, changez simplement l'adresse. #}
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 
     {# Voici le script en question : #}
     <script type="text/javascript">
         $(document).ready(function () {
             // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-            var $container = $('div#walva_simplecmsbundle_languagestrategy_delivererRelations');
+            var $container = $('div#walva_simplecmsbundle_CountryStrategy_delivererRelations');
 
             // On ajoute un lien pour ajouter une nouvelle catégorie
             var $lienAjout = $('<a href="#" id="ajout_categorie" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Ajouter une entrée</a>');

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CountryStrategyDelivererRelationType extends AbstractType
+class CountryStrategyRelationType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -27,7 +27,7 @@ class CountryStrategyDelivererRelationType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Walva\SimpleCmsBundle\Entity\CountryStrategyDelivererRelation'
+            'data_class' => 'Walva\SimpleCmsBundle\Entity\CountryStrategyRelation'
         ));
     }
 
@@ -36,6 +36,6 @@ class CountryStrategyDelivererRelationType extends AbstractType
      */
     public function getName()
     {
-        return 'walva_simplecmsbundle_countrystrategydelivererrelation';
+        return 'walva_simplecmsbundle_CountryStrategyrelation';
     }
 }
