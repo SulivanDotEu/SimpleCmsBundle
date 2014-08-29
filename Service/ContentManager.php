@@ -14,6 +14,7 @@ use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation\Tag;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Exception\InvalidRequestException;
 use Walva\SimpleCmsBundle\Interfaces\Service\ContentManagerInterface;
@@ -41,6 +42,12 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
      */
     public $requestStack;
 
+    /**
+     * @var SecurityContextInterface
+     * @Inject("security.context")
+     */
+    public $security;
+
     public function renderBlock($name, $options = null){
         $cr = $this->createEmptyContentRequest($name);
         $cr->setParameters($options);
@@ -53,15 +60,27 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
     {
         $cr->validate();
         $repository = $this->doctrine->getRepository("WalvaSimpleCmsBundle:Block");
-//        $block = $repository->findByInternalName("homepage.welcome");
         $block = $repository->findByInternalName($cr->getBlockName())[0];
         /** @var block Block */
         if($block === null) return "no block found, try again";
         $response = $block->getContentForRequest($cr);
+        $response = $this->beforeSendResponse($response);
         return $response;
-
         //return $this->container->get('templating')->renderResponse($view, $parameters, $response);
+    }
 
+    public function beforeSendResponse($response){
+        $response = $this->activateEdition($response);
+        return $response;
+    }
+
+    public function activateEdition($response){
+        if($this->security->isGranted('ROLE_ADMIN'));
+        $temp = '<div class="edition-enabled" contenteditable="true" >';
+        $temp .= $response;
+        $temp .= '</div>';
+        $response = $temp;
+        return $response;
     }
 
     /**
