@@ -5,6 +5,7 @@ namespace Walva\SimpleCmsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewConfigurator;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
 use Walva\SimpleCmsBundle\View\Label;
@@ -71,6 +72,10 @@ class Block implements TreeViewConfigurator
      * @ORM\JoinColumn(nullable=true)
      */
     private $deliverer;
+
+    public function getContentForRequest(ContentRequestInterface $cr){
+        return $this->getDeliverer()->getContentForRequest($cr);
+    }
 
     // BUSINESS CODE
     public function configureView(TreeViewInterface $view)

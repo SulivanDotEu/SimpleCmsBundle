@@ -3,6 +3,7 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Interfaces\Entity\StrategyDeliverer;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
 use Walva\SimpleCmsBundle\View\Label;
@@ -40,6 +41,19 @@ class LanguageStrategy extends AbstractContentDeliverer implements StrategyDeliv
     public function __construct()
     {
         $this->delivererRelations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getContentForRequest(ContentRequestInterface $cr){
+        $language = $cr->getLanguage();
+        $relations = $this->getDelivererRelations();
+        foreach ($relations as $relation) {
+
+            /** @var relation */
+            if($relation->getLanguage() == $language){
+                return $relation->getContentForRequest($cr);
+            }
+        }
+
     }
 
     public function configureView(TreeViewInterface $view)

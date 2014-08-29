@@ -41,7 +41,6 @@ class TreeViewBuilder extends \Twig_Extension
         $subView = $this->renderSubEntity($block->getDeliverer());
         $view->addChild($subView);
 
-//        var_dump($view);
 
         return $this->container->get("walva.simple_cms_bundle.view.tree.converter.boostrap")
             ->convert($view);
@@ -99,7 +98,7 @@ class TreeViewBuilder extends \Twig_Extension
 
     public function getName()
     {
-        return 'cms_renderBlock';
+        return 'cms_renderTree';
     }
 
     public function getFunctions()

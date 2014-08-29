@@ -45,6 +45,7 @@ class Document extends AbstractContentDeliverer implements TreeViewConfigurator
         return $view;
     }
 
+
     /**
      * Get id
      *

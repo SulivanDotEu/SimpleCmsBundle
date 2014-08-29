@@ -22,7 +22,7 @@ use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
 class TreeViewBoostrapConverter
 {
 
-    public $paddingLeft = 25;
+    public $paddingLeft = 30;
     public $paddingTop = 5;
 
     /**

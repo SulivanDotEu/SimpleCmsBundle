@@ -9,6 +9,7 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Interfaces\Entity\StrategyDelivererRelation;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewConfigurator;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
@@ -56,6 +57,10 @@ class CountryStrategyRelation implements StrategyDelivererRelation, TreeViewConf
         $label->setName($this->getCountry());
         $label->setColor(Label::COLOR_YELLOW);
         $view->addLabel($label);
+    }
+
+    public function getContentForRequest(ContentRequestInterface $cr){
+        return $this->getDeliverer()->getContentForRequest($cr);
     }
 
 

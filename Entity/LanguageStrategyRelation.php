@@ -3,6 +3,7 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Interfaces\Entity\StrategyDelivererRelation;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
 use Walva\SimpleCmsBundle\View\Label;
@@ -50,6 +51,10 @@ class LanguageStrategyRelation implements StrategyDelivererRelation
         $label->setName($this->getLanguage());
         $label->setColor(Label::COLOR_YELLOW);
         $view->addLabel($label);
+    }
+
+    public function getContentForRequest(ContentRequestInterface $cr){
+        return $this->getDeliverer()->getContentForRequest($cr);
     }
 
     /**

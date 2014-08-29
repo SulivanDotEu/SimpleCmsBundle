@@ -17,8 +17,8 @@ class ContentRequest implements ContentRequestInterface{
     public $blockName;
     public $parameters = array();
 
-    const INDEX_LANGUAGE = "required_language";
-    const INDEX_COUNTRY = "required_country";
+    const INDEX_LANGUAGE = "language";
+    const INDEX_COUNTRY = "country";
 
 
     public function getBlockName()
@@ -38,6 +38,7 @@ class ContentRequest implements ContentRequestInterface{
 
     public function setParameters($parameters)
     {
+        if($parameters == null) return;
         $initial = $this->getParameters();
         $this->parameters = array_merge($initial, $parameters);
     }
@@ -77,7 +78,7 @@ class ContentRequest implements ContentRequestInterface{
     public function validate()
     {
         if(empty($this->blockName)){
-            throw new InvalidRequestException();
+            throw new InvalidRequestException("block name can't be empty");
         }
     }
 

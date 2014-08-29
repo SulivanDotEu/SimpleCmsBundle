@@ -10,6 +10,7 @@ namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentDelivererInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Interfaces\Entity\StrategyDeliverer;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
 use Walva\SimpleCmsBundle\View\Label;
@@ -46,6 +47,19 @@ class CountryStrategy extends AbstractContentDeliverer implements StrategyDelive
     public function __construct()
     {
         $this->delivererRelations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getContentForRequest(ContentRequestInterface $cr){
+        $country = strtoupper($cr->getCountry());
+        $relations = $this->getDelivererRelations();
+        foreach ($relations as $relation) {
+
+            /** @var relation CountryStrategyRelation */
+            if($relation->getCountry() == $country){
+                return $relation->getContentForRequest($cr);
+            }
+        }
+
     }
 
     public function configureView(TreeViewInterface $view)
