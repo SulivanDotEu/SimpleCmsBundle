@@ -6,6 +6,8 @@ A simple CMS that provide block content and a few strategy (by country, by langu
 Installation
 ------------
 
-- add to your projet : `git submodule add https://github.com/SulivanDotEu/SimpleCmsBundle.git src/Walva/SimpleCmsBundle`
-- add it to your appkernel : `new Walva\SimpleCmsBundle\WalvaSimpleCmsBundle()`
-- 
+test
+
+* add to your projet : `git submodule add https://github.com/SulivanDotEu/SimpleCmsBundle.git src/Walva/SimpleCmsBundle`
+* add it to your appkernel : `new Walva\SimpleCmsBundle\WalvaSimpleCmsBundle()`
+* 
