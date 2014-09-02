@@ -8,6 +8,6 @@ Installation
 
 test
 
-* add to your projet : `git submodule add https://github.com/SulivanDotEu/SimpleCmsBundle.git src/Walva/SimpleCmsBundle`
-* add it to your appkernel : `new Walva\SimpleCmsBundle\WalvaSimpleCmsBundle()`
+* add the code inyour project : `git submodule add https://github.com/SulivanDotEu/SimpleCmsBundle.git src/Walva/SimpleCmsBundle`
+* add the bundle to your appkernel : `new Walva\SimpleCmsBundle\WalvaSimpleCmsBundle()`
 * 
