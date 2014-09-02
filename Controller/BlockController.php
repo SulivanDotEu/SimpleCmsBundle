@@ -13,7 +13,7 @@ use Walva\SimpleCmsBundle\Form\BlockType;
 /**
  * Block controller.
  *
- * @Route("/admin/cms/block")
+ * @Route("/block")
  */
 class BlockController extends Controller
 {

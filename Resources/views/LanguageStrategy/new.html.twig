@@ -14,11 +14,11 @@
     {% endblock %}
 
 
-<h1>LanguageStrategy creation</h1>
+<h1>Creation form</h1>
 
 {{ form(form) }}
 
-<ul class="record_actions">
+
 
 
     {# On charge la bibliothèque jQuery. Ici, je la prends depuis le site jquery.com,
@@ -29,7 +29,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-            var $container = $('div#walva_simplecmsbundle_CountryStrategy_delivererRelations');
+            var $container = $('div#walva_simplecmsbundle_languagestrategy_delivererRelations');
 
             // On ajoute un lien pour ajouter une nouvelle catégorie
             var $lienAjout = $('<a href="#" id="ajout_categorie" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Ajouter une entrée</a>');

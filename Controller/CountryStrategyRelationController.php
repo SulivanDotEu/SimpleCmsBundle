@@ -13,7 +13,7 @@ use Walva\SimpleCmsBundle\Form\CountryStrategyRelationType;
 /**
  * CountryStrategyRelation controller.
  *
- * @Route("/admin/cms/strategy/relation/country")
+ * @Route("/strategy/relation/country")
  */
 class CountryStrategyRelationController extends Controller
 {

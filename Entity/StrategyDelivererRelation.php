@@ -11,7 +11,7 @@ namespace Walva\SimpleCmsBundle\Entity;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentDelivererInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
+/***
  * AbstractContentDeliverer
  *
  * @ORM\Table()

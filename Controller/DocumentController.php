@@ -13,7 +13,7 @@ use Walva\SimpleCmsBundle\Form\DocumentType;
 /**
  * Document controller.
  *
- * @Route("/admin/cms/document")
+ * @Route("/document")
  */
 class DocumentController extends Controller
 {
@@ -34,6 +34,7 @@ class DocumentController extends Controller
         $this->setIndexPath("WalvaSimpleCmsBundle:Document:index.html.twig");
         $this->setShowPath("WalvaSimpleCmsBundle:Document:show.html.twig");
         $this->setEditPath("WalvaSimpleCmsBundle:Document:edit.html.twig");
+        $this->setNewPath("WalvaSimpleCmsBundle:Document:new.html.twig");
 
         $this->setColumnsHeader(
             array(

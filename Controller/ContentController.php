@@ -20,7 +20,7 @@ use Walva\SimpleCmsBundle\Interfaces\Service\ContentManagerInterface;
 /**
  * Ads controller.
  *
- * @Route("content")
+ * @Route("/content")
  */
 class ContentController extends Controller {
 

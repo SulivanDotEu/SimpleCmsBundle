@@ -1,0 +1,5 @@
+walva_simple_cms:
+    prefix:  /
+    type:     annotation
+    resource: "@WalvaSimpleCmsBundle/Controller/"
+

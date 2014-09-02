@@ -1,15 +1,47 @@
-{% extends '::base.html.twig' %}
+{% extends 'WalvaCrudAdminBundle:Crud:new.html.twig' %}
 
 {% block body -%}
+
+    {% block crud_top_button %}
+        <div style="padding-bottom: 44px;">
+            <div class="pull-left" style="padding-bottom: 10px;">
+                <a href="{{ path(routeIndex) }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Back to the list
+                </a>
+            </div>
+
+        </div>
+    {% endblock %}
+
+
     <h1>Document creation</h1>
 
-    {{ form(form) }}
+{{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('document') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+{% endblock %}
+
+
+{% block javascript %}
+    {{ parent() }}
+    {#{% javascripts#}
+    {#'@WalvaSimpleCmsBundle/Resources/public/js/ckeditor/ckeditor.js'#}
+    {#'@WalvaSimpleCmsBundle/Resources/public/js/ckeditor/adapters/jquery.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+
+    <script type="text/javascript" src="{{ asset('bundles/walvasimplecms/js/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/walvasimplecms/js/ckeditor/adapters/jquery.js') }}"></script>
+
+    <script type="application/javascript">
+        $( document ).ready( function() {
+            $( 'textarea#walva_simplecmsbundle_document_content' ).ckeditor({
+                allowedContent: true
+
+            });
+        } );
+    </script>
+
 {% endblock %}

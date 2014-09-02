@@ -13,7 +13,7 @@ use Walva\SimpleCmsBundle\Form\LanguageStrategyType;
 /**
  * LanguageStrategy controller.
  *
- * @Route("/admin/cms/strategy/language")
+ * @Route("/strategy/language")
  */
 class LanguageStrategyController extends Controller
 {
