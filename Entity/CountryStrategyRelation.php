@@ -10,6 +10,7 @@ namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
+use Walva\SimpleCmsBundle\Interfaces\Entity\StrategyDelivererRelation as StrategyDelivererRelationInterface;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewConfigurator;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
 use Walva\SimpleCmsBundle\View\Label;
@@ -20,7 +21,7 @@ use Walva\SimpleCmsBundle\View\Label;
  * @ORM\Table()
  * @ORM\Entity()
  */
-class CountryStrategyRelation implements \Walva\SimpleCmsBundle\Interfaces\Entity\StrategyDelivererRelation, TreeViewConfigurator
+class CountryStrategyRelation implements StrategyDelivererRelationInterface, TreeViewConfigurator
 {
 
     /**
