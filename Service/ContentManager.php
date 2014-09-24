@@ -60,7 +60,9 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
     {
         $cr->validate();
         $repository = $this->doctrine->getRepository("WalvaSimpleCmsBundle:Block");
-        $block = $repository->findByInternalName($cr->getBlockName())[0];
+        $results = $repository->findByInternalName($cr->getBlockName());
+	    if(empty($results)) return;
+	    $block = $results[0];
         /** @var block Block */
         if($block === null) return "no block found, try again";
         $response = $block->getContentForRequest($cr);
