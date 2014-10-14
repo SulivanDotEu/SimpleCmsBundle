@@ -19,3 +19,12 @@ Getting started
 * Create the content (a document)
 * link the content to the block
 * include the block : {{ cms_inclodeBlock('home.greetings', {"country" : app.request.get('country')})|raw }}
+
+
+Database
+--------
+
+* block
+* abstract_content_deliverer
+* country_strategy_relation
+* language_strategy_relation
