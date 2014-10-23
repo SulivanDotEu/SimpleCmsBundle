@@ -95,7 +95,6 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
     }
 
     public function activateEdition($response, Block $block){
-//        die('TA MERE FDP');
         if(!$this->security->isGranted('ROLE_ADMIN')) return $response;
 
         $url = $this->router->generate("walva_simplecms_block_show", array('id' => $block->getId()));

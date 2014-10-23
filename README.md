@@ -11,3 +11,11 @@ test
 * add the code inyour project : `git submodule add https://github.com/SulivanDotEu/SimpleCmsBundle.git src/Walva/SimpleCmsBundle`
 * add the bundle to your appkernel : `new Walva\SimpleCmsBundle\WalvaSimpleCmsBundle()`
 * 
+
+Getting started
+---------------
+
+* Create a block
+* Create the content (a document)
+* link the content to the block
+* include the block : {{ cms_inclodeBlock('home.greetings', {"country" : app.request.get('country')})|raw }}
