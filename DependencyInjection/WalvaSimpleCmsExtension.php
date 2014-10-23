@@ -14,6 +14,8 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class WalvaSimpleCmsExtension extends Extension
 {
+
+	const PARAMS_PREFIX = "walva.cms.";
     /**
      * {@inheritDoc}
      */
@@ -24,5 +26,8 @@ class WalvaSimpleCmsExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+	    $container->setParameter(self::PARAMS_PREFIX.'content_form_type', $config['content_form_type']);
+
     }
 }

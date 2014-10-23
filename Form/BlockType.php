@@ -16,7 +16,8 @@ class BlockType extends AbstractType
     {
         $builder
             ->add('internalName')
-            ->add('deliverer');
+            ->add('deliverer')
+           ;
     }
 
     /**

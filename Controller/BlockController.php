@@ -188,7 +188,29 @@ class BlockController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        return parent::updateAction($request, $id);
+	    /** @var Block $entity */
+	    $entity = $this->getRepository()->find($id);
+
+	    if (!$entity) {
+		    throw $this->createNotFoundException('Unable to find entity.');
+	    }
+
+	    $deleteForm = $this->createDeleteForm($id);
+	    $editForm = $this->createEditForm($entity);
+	    $editForm->handleRequest($request);
+
+	    if ($editForm->isValid()) {
+		    $entity->setLastEditor($this->getUser());
+		    $this->getDoctrine()->getManager()->flush();
+
+		    return $this->redirect($this->generateUrl($this->getRouteEdit(), array('id' => $id)));
+	    }
+
+	    $params = $this->getRenderParams();
+	    $params['entity'] = $entity;
+	    $params['edit_form'] = $editForm->createView();
+	    $params['delete_form'] = $deleteForm->createView();
+	    return $this->renderEditAction($params);
 
     }
 
