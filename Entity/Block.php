@@ -14,7 +14,7 @@ use Walva\SimpleCmsBundle\View\Label;
  * Bloc
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\BlockRepository")
+ * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Repository\BlockRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Block implements TreeViewConfigurator
@@ -49,18 +49,18 @@ class Block implements TreeViewConfigurator
      */
     private $editionDate;
 
-    /**
+    /*
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="BePark\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 
-    /**
+    /*
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="BePark\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
      * @ORM\JoinColumn(nullable=true)
      */
     private $lastEditor;
@@ -86,6 +86,11 @@ class Block implements TreeViewConfigurator
         $view->addLabel($label);
         $view->setName($this->getInternalName());
         return $view;
+    }
+
+    function __toString()
+    {
+        return $this->getInternalName();
     }
 
 
@@ -216,7 +221,7 @@ class Block implements TreeViewConfigurator
      * @param \BePark\UserBundle\Entity\User $author
      * @return Block
      */
-    public function setAuthor(\BePark\UserBundle\Entity\User $author = null)
+    public function setAuthor(AuthorInterface $author = null)
     {
         $this->author = $author;
     
@@ -239,7 +244,7 @@ class Block implements TreeViewConfigurator
      * @param \BePark\UserBundle\Entity\User $lastEditor
      * @return Block
      */
-    public function setLastEditor(\BePark\UserBundle\Entity\User $lastEditor = null)
+    public function setLastEditor(AuthorInterface $lastEditor = null)
     {
         $this->lastEditor = $lastEditor;
     

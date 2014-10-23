@@ -11,7 +11,7 @@ use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
  *
  * @ORM\Table()
  * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\AbstractContentDelivererRepository")
+ * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Repository\AbstractContentDelivererRepository")
  */
 class AbstractContentDeliverer implements ContentDelivererInterface
 {
