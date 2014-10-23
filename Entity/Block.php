@@ -3,8 +3,6 @@
 namespace Walva\SimpleCmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewConfigurator;
 use Walva\SimpleCmsBundle\Interfaces\View\TreeViewInterface;
@@ -49,7 +47,7 @@ class Block implements TreeViewConfigurator
      */
     private $editionDate;
 
-    /*
+    /**
      * @var UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
@@ -57,7 +55,7 @@ class Block implements TreeViewConfigurator
      */
     private $author;
 
-    /*
+    /**
      * @var UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
