@@ -14,7 +14,10 @@ use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation\Tag;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\Router;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Walva\SimpleCmsBundle\Entity\Block;
 use Walva\SimpleCmsBundle\Interfaces\Entity\ContentRequestInterface;
 use Walva\SimpleCmsBundle\Exception\InvalidRequestException;
 use Walva\SimpleCmsBundle\Interfaces\Service\ContentManagerInterface;
@@ -48,6 +51,12 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
      */
     public $security;
 
+    /**
+     * @var Router
+     * @Inject("router")
+     */
+    public $router;
+
     public function renderBlock($name, $options = null){
         $cr = $this->createEmptyContentRequest($name);
         $cr->setParameters($options);
@@ -61,25 +70,40 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
         $cr->validate();
         $repository = $this->doctrine->getRepository("WalvaSimpleCmsBundle:Block");
         $results = $repository->findByInternalName($cr->getBlockName());
-	    if(empty($results)) return;
-	    $block = $results[0];
+        if(count($results) == 0) return $this->noBlockFound($cr->getBlockName());
+        $block = $results[0];
         /** @var block Block */
         if($block === null) return "no block found, try again";
         $response = $block->getContentForRequest($cr);
-        $response = $this->beforeSendResponse($response);
+        $response = $this->beforeSendResponse($response, $block);
         return $response;
         //return $this->container->get('templating')->renderResponse($view, $parameters, $response);
     }
 
-    public function beforeSendResponse($response){
-        $response = $this->activateEdition($response);
+    public function noBlockFound(Block $block){
+        if($this->security->isGranted('ROLE_ADMIN')) return $this->noBlockFoundForAdmin($block);
+        return '';
+    }
+
+    public function noBlockFoundForAdmin(Block $block){
+        return "please create block ".$block->getInternalName();
+    }
+
+    public function beforeSendResponse($response, Block $block){
+        $response = $this->activateEdition($response, $block);
         return $response;
     }
 
-    public function activateEdition($response){
-        if($this->security->isGranted('ROLE_ADMIN'));
-        $temp = '<div class="edition-enabled" contenteditable="true" >';
+    public function activateEdition($response, Block $block){
+        if(!$this->security->isGranted('ROLE_ADMIN')) return $response;
+
+        $url = $this->router->generate("walva_simplecms_block_show", array('id' => $block->getId()));
+
+        $temp = '<div class="simplecms administration" ><a class="blockname" href="'.$url.'">'.$block->getInternalName()
+            .' <span class="glyphicon glyphicon-chevron-right"></span></a>';
+        $temp .= '<div class="edition-enabled" contenteditable="true" >';
         $temp .= $response;
+        $temp .= '</div>';
         $temp .= '</div>';
         $response = $temp;
         return $response;

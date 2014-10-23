@@ -12,7 +12,7 @@ use Walva\SimpleCmsBundle\View\Label;
  * Document
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Entity\DocumentRepository")
+ * @ORM\Entity(repositoryClass="Walva\SimpleCmsBundle\Repository\DocumentRepository")
  */
 class Document extends AbstractContentDeliverer implements TreeViewConfigurator
 {

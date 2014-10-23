@@ -4,7 +4,6 @@
     {% block crud_table_header %}
         <th>Id</th>
         <th>Internal Name</th>
-        <th>Content</th>
         <th>Action</th>
     {% endblock %}
 
@@ -13,7 +12,6 @@
 
     <td><a href="{{ path(routeShow, { 'id': entity.id }) }}">{{ entity.id }}</a></td>
     <td>{{ entity.internalName }}</td>
-    <td>{{ entity.content }}</td>
 
 {% endblock %}
 
