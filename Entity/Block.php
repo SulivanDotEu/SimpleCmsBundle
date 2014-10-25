@@ -50,7 +50,7 @@ class Block implements TreeViewConfigurator
     /**
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
+     * @ORM\OneToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
@@ -58,7 +58,7 @@ class Block implements TreeViewConfigurator
     /**
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
+     * @ORM\OneToOne(targetEntity="Walva\SimpleCmsBundle\Entity\AuthorInterface")
      * @ORM\JoinColumn(nullable=true)
      */
     private $lastEditor;

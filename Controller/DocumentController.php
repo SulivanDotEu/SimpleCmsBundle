@@ -2,6 +2,7 @@
 
 namespace Walva\SimpleCmsBundle\Controller;
 
+use JMS\DiExtraBundle\Annotation\Inject;
 use Symfony\Component\HttpFoundation\Request;
 use \Walva\CrudAdminBundle\Controller\CrudController as Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -17,6 +18,17 @@ use Walva\SimpleCmsBundle\Form\DocumentType;
  */
 class DocumentController extends Controller
 {
+
+	/**
+	 * This var contains the content form type in order to custom
+	 * the behavior of the content treatment.
+	 * e.g. : you can use HTML Purifier in order to clean javascript and form
+	 *          of all content of the cms.
+	 *
+	 * @var string
+	 * @Inject("%walva.cms.content_form_type%")
+	 */
+	private $_contentFormType = "text";
 
     function __construct()
     {
@@ -91,7 +103,7 @@ class DocumentController extends Controller
     public function createCreateForm(Document $entity)
     {
         $form = $this->createForm(
-            new DocumentType(),
+            new DocumentType($this->_contentFormType),
             $entity,
             array(
                 'action' => $this->generateUrl('walva_simplecms_document_create'),
@@ -153,7 +165,7 @@ class DocumentController extends Controller
     public function createEditForm(Document $entity)
     {
         $form = $this->createForm(
-            new DocumentType(),
+            new DocumentType($this->_contentFormType),
             $entity,
             array(
                 'action' => $this->generateUrl('walva_simplecms_document_update', array('id' => $entity->getId())),
