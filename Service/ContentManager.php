@@ -70,23 +70,23 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
         $cr->validate();
         $repository = $this->doctrine->getRepository("WalvaSimpleCmsBundle:Block");
         $results = $repository->findByInternalName($cr->getBlockName());
-        if(count($results) == 0) return $this->noBlockFound($cr->getBlockName());
+        if(count($results) == 0) return $this->noBlockFound($cr);
         $block = $results[0];
         /** @var block Block */
-        if($block === null) return "no block found, try again";
+        if($block === null) throw new \Exception("Logical exception : block cannot be null");
         $response = $block->getContentForRequest($cr);
         $response = $this->beforeSendResponse($response, $block);
         return $response;
         //return $this->container->get('templating')->renderResponse($view, $parameters, $response);
     }
 
-    public function noBlockFound(Block $block){
-        if($this->security->isGranted('ROLE_ADMIN')) return $this->noBlockFoundForAdmin($block);
+    public function noBlockFound(ContentRequestInterface $cr){
+        if($this->security->isGranted('ROLE_ADMIN')) return $this->noBlockFoundForAdmin($cr);
         return '';
     }
 
-    public function noBlockFoundForAdmin(Block $block){
-        return "please create block ".$block->getInternalName();
+    public function noBlockFoundForAdmin(ContentRequestInterface $cr){
+        return "please create block ".$cr->getBlockName();
     }
 
     public function beforeSendResponse($response, Block $block){
