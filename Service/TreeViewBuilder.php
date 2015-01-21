@@ -105,7 +105,6 @@ class TreeViewBuilder extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction($this->getName(), array($this, 'renderBlock'), array()),
-//            new \Twig_SimpleFilter('price', array($this, 'renderBlock')),
         );
     }
 

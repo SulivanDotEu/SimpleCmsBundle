@@ -57,6 +57,12 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
      */
     public $router;
 
+	/**
+	 * @var boolean
+	 * @Inject("%walva.cms.allow_live_edition%")
+	 */
+	public $allowLiveEdition;
+
     public function renderBlock($name, $options = null){
         $cr = $this->createEmptyContentRequest($name);
         $cr->setParameters($options);
@@ -95,6 +101,7 @@ class ContentManager extends \Twig_Extension implements ContentManagerInterface 
     }
 
     public function activateEdition($response, Block $block){
+	    if(!$this->allowLiveEdition) return $response;
         if(!$this->security->isGranted('ROLE_ADMIN')) return $response;
 
         $url = $this->router->generate("walva_simplecms_block_show", array('id' => $block->getId()));

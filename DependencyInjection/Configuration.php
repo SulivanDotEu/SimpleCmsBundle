@@ -22,6 +22,8 @@ class Configuration implements ConfigurationInterface
 	        ->root('walva_simple_cms')
 	            ->children()
 	                ->scalarNode('content_form_type')->defaultValue("text")->end()
+	                ->scalarNode('allow_live_edition')->defaultFalse()->end()
+	                ->scalarNode('shortcut_to_block')->defaultFalse()->end()
 	            ->end()
 	        ->end();
 

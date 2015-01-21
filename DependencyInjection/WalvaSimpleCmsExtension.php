@@ -16,6 +16,10 @@ class WalvaSimpleCmsExtension extends Extension
 {
 
 	const PARAMS_PREFIX = "walva.cms.";
+	const PARAMS_FORM_TYPE = "content_form_type";
+	const PARAMS_LIVE_EDITION = "allow_live_edition";
+	const PARAMS_BLOCK_SHORTCUT = "shortcut_to_block";
+
     /**
      * {@inheritDoc}
      */
@@ -27,7 +31,9 @@ class WalvaSimpleCmsExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-	    $container->setParameter(self::PARAMS_PREFIX.'content_form_type', $config['content_form_type']);
+	    $container->setParameter(self::PARAMS_PREFIX.self::PARAMS_FORM_TYPE, $config[self::PARAMS_FORM_TYPE]);
+	    $container->setParameter(self::PARAMS_PREFIX.self::PARAMS_LIVE_EDITION, $config[self::PARAMS_LIVE_EDITION]);
+	    $container->setParameter(self::PARAMS_PREFIX.self::PARAMS_BLOCK_SHORTCUT, $config[self::PARAMS_BLOCK_SHORTCUT]);
 
     }
 }
