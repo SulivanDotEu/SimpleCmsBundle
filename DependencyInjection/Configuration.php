@@ -19,11 +19,14 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder
-            ->root('walva_simple_cms')
-            ->children()
-            ->scalarNode('content_form_type')->defaultValue("textarea")->end()
-            ->end()
-            ->end();
+
+	        ->root('walva_simple_cms')
+	            ->children()
+	                ->scalarNode('content_form_type')->defaultValue("text")->end()
+	                ->scalarNode('allow_live_edition')->defaultFalse()->end()
+	                ->scalarNode('shortcut_to_block')->defaultFalse()->end()
+	            ->end()
+	        ->end();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

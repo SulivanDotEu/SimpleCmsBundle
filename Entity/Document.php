@@ -28,7 +28,7 @@ class Document extends AbstractContentDeliverer implements TreeViewConfigurator
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="content", type="string", length=65536)
      */
     private $content;
 
