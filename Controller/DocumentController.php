@@ -28,7 +28,7 @@ class DocumentController extends Controller
 	 * @var string
 	 * @Inject("%walva.cms.content_form_type%")
 	 */
-	private $_contentFormType = "text";
+	private $_contentFormType = "textarea";
 
     function __construct()
     {

@@ -19,6 +19,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder
+
 	        ->root('walva_simple_cms')
 	            ->children()
 	                ->scalarNode('content_form_type')->defaultValue("text")->end()
@@ -34,3 +35,4 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 }
+
